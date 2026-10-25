@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habiba Abdelaty Portfolio</title>
+  <meta name="description" content="Portfolio of Habiba Abdelaty, Software Engineering student." />
+
+  <!-- Fonts: Fraunces (display serif) for headings, Manrope (sans) for body, Space Mono for code-style labels -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Skip link for keyboard/screen-reader users -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a href="#top" class="logo">HA<span class="logo-dot">.</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" title="Toggle theme">
+        <span class="theme-icon" aria-hidden="true">☀︎</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO / ABOUT ============ -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="hero-comment">
+            <span class="comment-token">/*</span>
+            <span id="greeting">Hello</span>
+            <span class="comment-token">*/</span>
+          </p>
+          <h1 class="hero-name">Habiba<br />Abdelaty</h1>
+          <p class="hero-lede">
+            I'm a Software Engineering student who enjoys building things that are actually useful. I like taking an idea, figuring out how to make it work, and slowly turning it into something real. I care about the little details, probably more than I should, and I'm always looking for something new to learn or build.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">See my projects</a>
+            <a href="#contact" class="btn btn-ghost">Say hello</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="section-inner about-grid">
+        <div class="about-text" data-reveal>
+          <p class="section-label">About Me</p>
+          <h2 class="section-title">A little more about me</h2>
+          <p>
+            I'm a Software Engineering student who likes turning “someone should really fix this” problems into things that actually work. I enjoy the technical side of building, but what keeps me interested is everything around it too: understanding the problem, figuring things out as I go, and seeing an idea become something people can actually use.
+          </p>
+          <p>
+            Outside of coding, I have a habit of saying yes to things I’ve never done before. You’ll usually find me somewhere between leading a team, helping run an event, joining a hackathon with no idea what I’ve gotten myself into, or exploring whatever new opportunity caught my attention that week. I like learning by doing, especially when it means stepping a little outside what I already know.
+          </p>
+        </div>
+        <ul class="about-facts" data-reveal>
+          <li>
+            <span class="fact-label">Studying</span>
+            <span class="fact-value">Software Engineering</span>
+          </li>
+          <li>
+            <span class="fact-label">Focused on</span>
+            <span class="fact-value">Software Development & AI</span>
+          </li>
+          <li>
+            <span class="fact-label">Currently learning</span>
+            <span class="fact-value">React, accessibility, UI systems</span>
+          </li>
+          <li>
+            <span class="fact-label">Based in</span>
+            <span class="fact-value">Dhahran, Saudi Arabia</span>
+          </li>
+        </ul>
+
+        <!-- Public-API data handling (A2): live stats fetched from api.github.com (js/script.js → setupGithubStats) -->
+        <div class="github-stats" id="githubStats" data-username="habiba-05" data-reveal>
+          <h3 class="github-stats-title">Live from GitHub</h3>
+          <p class="github-status" role="status" aria-live="polite">Loading GitHub stats…</p>
+          <div class="github-data" hidden>
+            <div class="github-stat">
+              <span class="github-stat-value" data-field="repos">—</span>
+              <span class="github-stat-label">Public repos</span>
+            </div>
+            <div class="github-stat">
+              <span class="github-stat-value" data-field="followers">—</span>
+              <span class="github-stat-label">Followers</span>
+            </div>
+            <div class="github-stat">
+              <span class="github-stat-value" data-field="following">—</span>
+              <span class="github-stat-label">Following</span>
+            </div>
+            <a class="github-link" data-field="profile-link" href="https://github.com/habiba-05" target="_blank" rel="noopener noreferrer">View profile →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section section-alt" id="projects">
+      <div class="section-inner">
+        <p class="section-label">Projects</p>
+        <h2 class="section-title">Things I've built</h2>
+
+        <!-- Dynamic feature: clicking a filter button shows/hides projects by category (js/script.js → setupProjectFilter) -->
+        <div class="project-filters" role="group" aria-label="Filter projects by category">
+          <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+          <button type="button" class="filter-btn" data-filter="mobile">Mobile</button>
+          <button type="button" class="filter-btn" data-filter="ai">AI &amp; ML</button>
+          <button type="button" class="filter-btn" data-filter="data">Data</button>
+          <button type="button" class="filter-btn" data-filter="web">Web</button>
+        </div>
+
+        <p class="project-empty" id="projectEmpty" hidden>No projects match this filter yet — check back soon!</p>
+
+        <ul class="project-list" id="projectList">
+          <li class="project-row" data-categories="mobile ai" data-reveal>
+            <span class="project-index">01</span>
+            <div class="project-media">
+              <img src="assets/images/project-fitfeed.svg" alt="Screen mockup of the Fitfeed app showing activity rings and an AI workout suggestion" loading="lazy" />
+            </div>
+            <div class="project-copy">
+              <h3>Fitfeed</h3>
+              <p>
+                An app that combines fitness tracking with AI — turning your activity and habits into a feed of
+                personalized suggestions instead of just a wall of numbers.
+              </p>
+              <ul class="project-tags">
+                <li>Mobile App</li>
+                <li>AI / ML</li>
+                <li>Health Data</li>
+              </ul>
+              <a class="project-link" href="#" aria-label="View Fitfeed project (placeholder link)">View project →</a>
+            </div>
+          </li>
+
+          <li class="project-row project-row-reverse" data-categories="ai data" data-reveal>
+            <span class="project-index">02</span>
+            <div class="project-media">
+              <img src="assets/images/project-wiper-trip.svg" alt="Screen mockup of the Wiper Trip AI Prediction dashboard showing a risk gauge and well readings chart" loading="lazy" />
+            </div>
+            <div class="project-copy">
+              <h3>Wiper Trip AI Prediction</h3>
+              <p>
+                A dashboard that uses AI and drilling data to predict whether a well needs a wiper trip, helping
+                engineers make faster, more confident calls before committing rig time.
+              </p>
+              <ul class="project-tags">
+                <li>Python</li>
+                <li>Machine Learning</li>
+                <li>Data Dashboard</li>
+              </ul>
+              <a class="project-link" href="#" aria-label="View Wiper Trip AI Prediction project (placeholder link)">View project →</a>
+            </div>
+          </li>
+
+          <li class="project-row" data-categories="mobile data" data-reveal>
+            <span class="project-index">03</span>
+            <div class="project-media">
+              <img src="assets/images/project-navkfupm.svg" alt="Screen mockup of the NavKFUPM app showing a parking lot grid with open and taken spots" loading="lazy" />
+            </div>
+            <div class="project-copy">
+              <h3>KFUPM Student Parking App (NavKFUPM)</h3>
+              <p>
+                A campus app that shows how many open spots are left in each KFUPM parking lot in real time, so
+                students can stop circling and just park.
+              </p>
+              <ul class="project-tags">
+                <li>Mobile App</li>
+                <li>Real-time Data</li>
+                <li>Campus Tech</li>
+              </ul>
+              <a class="project-link" href="#" aria-label="View NavKFUPM project (placeholder link)">View project →</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="section-inner">
+        <p class="section-label">Skills</p>
+        <h2 class="section-title">What I work with</h2>
+        <div class="skills-grid">
+          <div class="skill-group" data-reveal>
+            <h3>Languages</h3>
+            <ul class="chip-list">
+              <li class="chip">JavaScript</li>
+              <li class="chip">Python</li>
+              <li class="chip">Java</li>
+              <li class="chip">HTML & CSS</li>
+            </ul>
+          </div>
+          <div class="skill-group" data-reveal>
+            <h3>Tools & frameworks</h3>
+            <ul class="chip-list">
+              <li class="chip">Git & GitHub</li>
+              <li class="chip">React</li>
+              <li class="chip">Figma</li>
+              <li class="chip">VS Code</li>
+            </ul>
+          </div>
+          <div class="skill-group" data-reveal>
+            <h3>Currently learning</h3>
+            <ul class="chip-list">
+              <li class="chip">Web development</li>
+              <li class="chip">Data structures</li>
+              <li class="chip">UI systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section-alt" id="contact">
+      <div class="section-inner contact-inner">
+        <div class="contact-intro" data-reveal>
+          <p class="section-label">Contact</p>
+          <h2 class="section-title">Let's talk</h2>
+          <p>
+            Have a project, an opportunity, or just want to talk about color palettes? My inbox is open.
+          </p>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate data-reveal>
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required />
+            <span class="field-error" id="nameError" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+            <span class="field-error" id="emailError" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <span class="field-error" id="messageError" role="alert"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send message</button>
+
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-inner footer-inner">
+      <p>Designed & built by Habiba Abdelaty.</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/habiba-05" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/habiba-abdelaty-512b462b2" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="mailto:habibaabdelaty@gmail.com">Email</a></li>
+      </ul>
+      <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
