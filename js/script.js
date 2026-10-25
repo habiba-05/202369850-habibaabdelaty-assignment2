@@ -300,7 +300,7 @@ function setupGithubStats() {
   fetch(`https://api.github.com/users/${username}`)
     .then((response) => {
       if (!response.ok) {
-        throw new Error(GitHub API responded with ${response.status});
+        throw new Error(`GitHub API responded with ${response.status}`);
       }
       return response.json();
     })
