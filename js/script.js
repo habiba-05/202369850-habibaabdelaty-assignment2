@@ -282,41 +282,47 @@ function setupProjectFilter() {
 --------------------------------------------------------- */
 function setupGithubStats() {
   const container = document.getElementById('githubStats');
-
   if (!container) return;
 
   const username = container.dataset.username;
-  const status = container.querySelector('.github-status');
-  const data = container.querySelector('.github-data');
+  const statusEl = container.querySelector('.github-status');
+  const dataEl = container.querySelector('.github-data');
 
   if (!username) {
-    status.textContent = 'No GitHub username configured.';
+    statusEl.textContent = 'No GitHub username configured.';
     return;
   }
 
-  status.textContent = 'Loading GitHub stats...';
+  statusEl.textContent = 'Loading GitHub stats…';
+  statusEl.hidden = false;
+  dataEl.hidden = true;
 
   fetch(`https://api.github.com/users/${username}`)
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Could not load GitHub data');
+        throw new Error(GitHub API responded with ${response.status});
       }
-
       return response.json();
     })
-    .then((user) => {
-      data.querySelector('[data-field="repos"]').textContent = user.public_repos;
-      data.querySelector('[data-field="followers"]').textContent = user.followers;
-      data.querySelector('[data-field="following"]').textContent = user.following;
+    .then((data) => {
+      dataEl.querySelector('[data-field="repos"]').textContent = data.public_repos ?? '—';
+      dataEl.querySelector('[data-field="followers"]').textContent = data.followers ?? '—';
+      dataEl.querySelector('[data-field="following"]').textContent = data.following ?? '—';
 
-      const profileLink = data.querySelector('[data-field="profile-link"]');
-      profileLink.href = user.html_url;
+      const link = dataEl.querySelector('[data-field="profile-link"]');
+      if (link && data.html_url) link.href = data.html_url;
 
-      status.hidden = true;
-      data.hidden = false;
+      statusEl.hidden = true;
+      dataEl.hidden = false;
+      // Wait a frame so the browser registers the un-hidden state before
+      // adding the class that triggers the fade/slide-in transition
+      requestAnimationFrame(() => dataEl.classList.add('is-revealed'));
     })
     .catch(() => {
-      status.textContent = 'Could not load GitHub stats. Please try again later.';
+      // Friendly, specific error — the user shouldn't be left guessing why
+      statusEl.textContent =
+        "Couldn't load live GitHub stats right now (the API may be rate-limited). Try again in a bit, or visit the profile directly.";
+      statusEl.classList.add('is-error');
     });
 }
 /* ---------------------------------------------------------
