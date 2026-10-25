@@ -224,29 +224,49 @@ function setupProjectFilter() {
   const buttons = document.querySelectorAll('.filter-btn');
   const rows = document.querySelectorAll('.project-row');
   const emptyMessage = document.getElementById('projectEmpty');
+  if (!buttons.length || !rows.length) return;
+
+  const FADE_MS = 220; // keep in sync with the CSS transition duration
+  const pendingHideTimeouts = new Map(); // row -> timeout id, so rapid clicks don't race each other
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter;
+
+      // Update which button looks active
+      buttons.forEach((b) => b.classList.toggle('is-active', b === button));
+
       let visibleCount = 0;
 
-      buttons.forEach((item) => {
-        item.classList.toggle('is-active', item === button);
-      });
-
       rows.forEach((row) => {
-        const categories = row.dataset.categories.split(' ');
-        const showRow = filter === 'all' || categories.includes(filter);
+        const categories = (row.dataset.categories || '').split(' ');
+        const matches = filter === 'all' || categories.includes(filter);
 
-        row.classList.toggle('is-hidden', !showRow);
+        // Cancel any fade-out still pending from a previous click on this row
+        if (pendingHideTimeouts.has(row)) {
+          clearTimeout(pendingHideTimeouts.get(row));
+          pendingHideTimeouts.delete(row);
+        }
 
-        if (showRow) {
-          visibleCount++;
+        if (matches) {
+          visibleCount += 1;
+          row.classList.remove('is-hidden');
+          // Let the browser register the row's display before fading it in
+          requestAnimationFrame(() => row.classList.remove('is-filtering-out'));
+        } else {
+          row.classList.add('is-filtering-out');
+          // Wait for the fade-out to finish before removing it from layout
+          const timeoutId = setTimeout(() => {
+            row.classList.add('is-hidden');
+            pendingHideTimeouts.delete(row);
+          }, FADE_MS);
+          pendingHideTimeouts.set(row, timeoutId);
         }
       });
 
+      // Empty state: tell the user clearly when a filter has no matches
       if (emptyMessage) {
-        emptyMessage.hidden = visibleCount > 0;
+        emptyMessage.hidden = visibleCount !== 0;
       }
     });
   });
